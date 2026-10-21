@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#123e36">
+    <meta name="description" content="Ruang untuk merencanakan langkah kecil, mengelola tugas, dan melihat progresmu.">
+    <title>Dashboard · Ruang</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="dashboard.css">
+    <script src="session.js" defer></script>
+    <script src="dashboard.js" defer></script>
+  </head>
+  <body class="dashboard-page">
+    <noscript><p class="noscript-note">Aktifkan JavaScript untuk menggunakan dashboard. <a href="index.html">Kembali ke halaman masuk</a>.</p></noscript>
+    <div id="dashboard-shell" class="dashboard-shell" hidden>
+      <a class="skip-link" href="#dashboard-heading">Lewati ke isi dashboard</a>
+      <aside class="sidebar" aria-label="Navigasi Ruang">
+        <div class="sidebar-inner">
+        <a class="brand" href="dashboard.html" aria-label="Ruang, dashboard">
+          <span class="brand-mark" aria-hidden="true">r.</span> ruang
+        </a>
+        <div class="sidebar-nav-wrap">
+          <p class="sidebar-label">RUANG KERJAMU</p>
+          <nav class="sidebar-nav" aria-label="Menu utama">
+            <a class="nav-link" href="#ringkasan" aria-current="location">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+              Ringkasan
+            </a>
+            <a class="nav-link" href="#tugas">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 6 2 2 4-4M12 6h9M3 14l2 2 4-4M12 14h9M12 21h9"/></svg>
+              Tugas saya
+            </a>
+          </nav>
+        </div>
+        <div class="sidebar-note">
+          <span aria-hidden="true">✦</span>
+          <p>Tidak perlu terburu-buru.<br>Satu langkah juga berarti.</p>
+        </div>
+        <div class="sidebar-bottom">
+          <div class="sidebar-account">
+            <span class="avatar" aria-hidden="true">D</span>
+            <div class="account-details"><strong>Pengguna Demo</strong><p id="account-email">demo@example.com</p></div>
+          </div>
+          <button id="logout" class="logout-button" type="button">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 4H5a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h5M14 8l4 4-4 4M8 12h11"/></svg>
+            Keluar
+          </button>
+        </div>
+        </div>
+      </aside>
+
+      <main class="dashboard-main">
+        <header class="dashboard-header">
+          <div>
+            <p class="eyebrow dashboard-eyebrow">SELAMAT DATANG DI RUANG</p>
+            <h1 id="dashboard-heading" tabindex="-1">Halo, Demo<span class="greeting-dot" aria-hidden="true">.</span></h1>
+            <p class="dashboard-subtitle">Ada hal baik yang bisa kamu mulai hari ini.</p>
+          </div>
+          <div class="header-meta">
+            <span class="demo-badge"><span class="status-dot" aria-hidden="true"></span> AKUN DEMO</span>
+            <time id="dashboard-date"></time>
+          </div>
+        </header>
+
+        <section id="ringkasan" class="overview" aria-label="Ringkasan progres">
+          <div class="dashboard-hero">
+            <div class="hero-copy">
+              <p class="eyebrow">SEDIKIT DEMI SEDIKIT</p>
+              <h2>Langkah kecil,<br>progres berarti.</h2>
+              <p>Rapikan rencanamu, selesaikan satu per satu.<br>Ruang ini milikmu untuk bertumbuh.</p>
+              <a class="hero-link" href="#tugas">Mulai dari satu tugas <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg></a>
+            </div>
+            <div class="hero-art" aria-hidden="true"><span class="hero-circle"></span><span class="hero-arch"></span><span class="hero-orbit"></span><span class="hero-spark">✦</span><span class="hero-art-caption">make room for progress.</span></div>
+          </div>
+
+          <div class="stat-grid">
+            <article class="stat-card">
+              <div class="stat-top"><p>Total tugas</p><span class="stat-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V2h6v2M9 10h6M9 14h6M9 18h3"/></svg></span></div>
+              <p class="stat-value" id="total-tasks">0</p>
+              <p class="stat-caption">Langkah yang direncanakan</p>
+            </article>
+            <article class="stat-card stat-complete">
+              <div class="stat-top"><p>Sudah selesai</p><span class="stat-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg></span></div>
+              <p class="stat-value" id="completed-tasks">0</p>
+              <p class="stat-caption">Kemajuan yang patut dirayakan</p>
+            </article>
+            <article class="stat-card">
+              <div class="stat-top"><p>Belum selesai</p><span class="stat-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span></div>
+              <p class="stat-value" id="pending-tasks">0</p>
+              <p class="stat-caption">Satu per satu, kamu bisa</p>
+            </article>
+          </div>
+        </section>
+
+        <div class="dashboard-content">
+          <section id="tugas" class="task-card" aria-labelledby="tasks-heading">
+            <div class="card-heading"><div><p class="eyebrow">RENCANA & LANGKAH</p><h2 id="tasks-heading">Tugas saya</h2></div><span class="card-heading-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 18 18 6M6 6h12v12"/></svg></span></div>
+            <form id="task-form" novalidate>
+              <label for="task-input">Apa langkahmu berikutnya?</label>
+              <div class="task-input-row"><input id="task-input" name="task" type="text" maxlength="120" required placeholder="Tulis satu hal yang ingin diselesaikan…" autocomplete="off" aria-describedby="task-error"><button class="primary-button add-task-button" type="submit"><span aria-hidden="true">+</span> Tambah</button></div>
+              <p id="task-error" class="field-error" aria-live="polite"></p>
+            </form>
+            <div class="task-filters" role="group" aria-label="Filter tugas">
+              <button type="button" data-filter="all" aria-pressed="true" aria-controls="task-list">Semua</button>
+              <button type="button" data-filter="active" aria-pressed="false" aria-controls="task-list">Belum selesai</button>
+              <button type="button" data-filter="completed" aria-pressed="false" aria-controls="task-list">Selesai</button>
+            </div>
+            <ul id="task-list" class="task-list" aria-label="Daftar tugas"></ul>
+            <p id="task-empty" class="task-empty" hidden>Belum ada tugas. Mulai dengan satu langkah kecil.</p>
+            <p id="task-status" class="sr-only" role="status" aria-live="polite"></p>
+            <p class="task-hint"><span aria-hidden="true">✓</span> Centang tugas untuk mencatat progresmu.</p>
+            <p id="storage-note" class="storage-note">Tugasmu tersimpan di browser ini.</p>
+          </section>
+
+          <aside class="progress-column" aria-label="Progres dan pengingat">
+            <section class="progress-card" aria-labelledby="progress-heading">
+              <p class="eyebrow">SETIAP LANGKAH BERARTI</p>
+              <h2 id="progress-heading">Progresmu</h2>
+              <div id="progress-ring" class="progress-ring" aria-hidden="true"><div><strong id="progress-percent">0%</strong><span>terselesaikan</span></div></div>
+              <label class="sr-only" for="task-progress">Persentase tugas selesai</label>
+              <progress id="task-progress" class="sr-only" max="100" value="0" aria-describedby="progress-summary">0%</progress>
+              <p id="progress-summary" class="progress-summary">Belum ada tugas yang diselesaikan.</p>
+              <p class="progress-caption">Beri dirimu ruang untuk berproses.</p>
+            </section>
+            <div class="little-reminder"><span aria-hidden="true">✦</span><div><p>Pengingat kecil</p><blockquote>“Tidak harus sempurna.<br>Yang penting, terus melangkah.”</blockquote></div></div>
+          </aside>
+        </div>
+        <footer class="dashboard-footer"><p>Sederhana. Nyaman. Untukmu.</p><span>ruang untuk bertumbuh <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg></span></footer>
+      </main>
+    </div>
+  </body>
+</html>

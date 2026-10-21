@@ -11,8 +11,15 @@ const email = document.getElementById("email");
 const password = document.getElementById("password");
 const togglePassword = document.getElementById("toggle-password");
 const loginError = document.getElementById("login-error");
-const loginView = document.getElementById("login-view");
-const successView = document.getElementById("success-view");
+
+function resumeSession() {
+  if (window.RuangSession.isActive()) {
+    window.location.replace("dashboard.html");
+  }
+}
+
+resumeSession();
+window.addEventListener("pageshow", resumeSession);
 
 function setFieldError(input, message) {
   document.getElementById(`${input.id}-error`).textContent = message;
@@ -87,25 +94,13 @@ form.addEventListener("submit", (event) => {
     return;
   }
 
-  document.getElementById("account-email").textContent = DEMO_ACCOUNT.email;
+  if (!window.RuangSession.begin()) {
+    loginError.textContent = "Sesi demo tidak bisa disimpan. Izinkan penyimpanan situs di browser, lalu coba lagi.";
+    loginError.hidden = false;
+    return;
+  }
+
   password.value = "";
   hidePassword();
-  loginView.hidden = true;
-  successView.hidden = false;
-  document.title = "Selamat datang · Ruang";
-  document.getElementById("success-heading").focus();
-});
-
-document.getElementById("logout").addEventListener("click", () => {
-  form.reset();
-  hidePassword();
-  clearLoginError();
-  setFieldError(email, "");
-  setFieldError(password, "");
-  document.getElementById("demo-status").textContent = "";
-  document.getElementById("account-email").textContent = "";
-  successView.hidden = true;
-  loginView.hidden = false;
-  document.title = "Masuk · Ruang";
-  email.focus();
+  window.location.replace("dashboard.html");
 });

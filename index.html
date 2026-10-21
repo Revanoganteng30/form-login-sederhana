@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#123e36">
-    <meta name="description" content="Contoh form login sederhana dengan validasi dan tampilan responsif.">
+    <meta name="description" content="Masuk ke Ruang, tempat sederhana untuk merencanakan tugas dan melihat progresmu.">
     <title>Masuk · Ruang</title>
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="styles.css">
+    <script src="session.js" defer></script>
     <script src="app.js" defer></script>
   </head>
   <body>
@@ -75,20 +76,6 @@
             <button id="fill-demo" class="text-button" type="button">Isi akun demo <span aria-hidden="true">→</span></button>
             <p id="demo-status" class="sr-only" role="status"></p>
           </div>
-        </div>
-
-        <div id="success-view" class="form-content success-content" hidden>
-          <div class="section-icon success-icon" aria-hidden="true">✓</div>
-          <p class="eyebrow form-eyebrow">KAMU SUDAH MASUK</p>
-          <h2 id="success-heading" tabindex="-1">Selamat datang!</h2>
-          <p class="subtitle">Login demo berhasil. Senang kamu ada di sini.</p>
-          <div class="account-card">
-            <span class="avatar" aria-hidden="true">D</span>
-            <div><strong>Pengguna Demo</strong><p id="account-email"></p></div>
-            <span class="account-check" aria-label="Berhasil">✓</span>
-          </div>
-          <p class="demo-note">Ini adalah simulasi login. Sesi hanya aktif selama halaman ini terbuka.</p>
-          <button id="logout" class="primary-button" type="button">Keluar dari demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg></button>
         </div>
 
         <p class="panel-footer">Dibuat untuk belajar, dimulai dari yang sederhana.</p>
